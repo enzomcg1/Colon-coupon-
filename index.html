@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elegí y Ganá</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #f26522, #fbbf11);
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: white;
+    }
+
+    .logo {
+      max-width: 120px;
+      height: auto;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #a30d15;
+      font-weight: bold;
+      font-size: 16px;
+      
+    }
+
+    main {
+      padding: 20px;
+      text-align: center;
+    }
+
+    h2 {
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    .consulta-box {
+      background: white;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #d1101c;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #a30d15;
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        max-width: 80px;
+      }
+
+      nav a {
+        font-size: 14px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="colonsa.png" alt="Logo nuevo" class="logo">
+    <nav>
+      <a href="#">CONSULTAR CUPONES</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Consultá tus cupones acumulados</h2>
+    <div class="consulta-box">
+      <label for="cedula">Cédula de identidad o RUC:</label>
+      <input type="text" id="cedula" placeholder="Ej: 12345678">
+      <button onclick="consultar()">CONSULTAR</button>
+    </div>
+  </main>
+
+  <script>
+    const clientes = {
+      "12345678": { nombre: "Juan Pérez", cupones: 5 },
+      "87654321": { nombre: "María González", cupones: 3 }
+    };
+
+    function consultar() {
+      const cedula = document.getElementById('cedula').value.trim();
+      if (!cedula) {
+        alert("Por favor ingresá tu cédula o RUC.");
+        return;
+      }
+
+      const cliente = clientes[cedula];
+      const data = cliente
+        ? `nombre=${encodeURIComponent(cliente.nombre)}&cupones=${cliente.cupones}`
+        : `error=1`;
+
+      window.open(`resultado.html?cedula=${cedula}&${data}`, '_blank');
+    }
+  </script>
+</body>
+</html>
