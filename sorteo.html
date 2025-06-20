@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sorteo en Vivo</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #f26522, #fbbf11);
+      margin: 0;
+      padding: 0;
+      color: white;
+      text-align: center;
+    }
+
+    header {
+      padding: 15px;
+      background-color: white;
+    }
+
+    .logo {
+      max-width: 120px;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 28px;
+    }
+
+    #tombola-box {
+      background: white;
+      color: black;
+      max-width: 500px;
+      margin: 30px auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .nombre-actual {
+      font-size: 24px;
+      font-weight: bold;
+      color: #d1101c;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .ganador {
+      font-size: 22px;
+      font-weight: bold;
+      color: green;
+      margin-top: 25px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      background-color: #d1101c;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #a30d15;
+    }
+
+    .volver {
+      background-color: #555;
+      margin-top: 15px;
+    }
+
+    .volver:hover {
+      background-color: #333;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 22px;
+      }
+
+      #tombola-box {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      .nombre-actual {
+        font-size: 20px;
+      }
+
+      .ganador {
+        font-size: 18px;
+      }
+
+      button {
+        width: 100%;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="colonsa.png" alt="Logo nuevo" class="logo">
+  </header>
+
+  <main>
+    <h1>Sorteo en Vivo 🎊</h1>
+    <div id="tombola-box">
+      <p>Presioná el botón para iniciar la tómbola y seleccionar un ganador.</p>
+      <div class="nombre-actual" id="nombreActual">---</div>
+      <button onclick="iniciarTombola()">🎁 Iniciar Sorteo</button>
+      <div class="ganador" id="ganador"></div>
+      <button class="volver" onclick="location.href='index.html'"> Volver al inicio</button>
+    </div>
+  </main>
+
+ <script>
+  const clientes = {
+    "12345678": { nombre: "Juan Pérez", cupones: 5, telefono: "0981123456", email: "juan.perez@email.com" },
+    "87654321": { nombre: "María González", cupones: 3, telefono: "0982987654", email: "maria.gonzalez@email.com" },
+    "11112222": { nombre: "Carlos López", cupones: 7, telefono: "0981123488", email: "carlos.lopez@email.com" },
+    "33334444": { nombre: "Ana Torres", cupones: 1, telefono: "0975123123", email: "ana.torres@email.com" },
+    "55556666": { nombre: "Luis Fernández", cupones: 9, telefono: "0981654321", email: "luis.fernandez@email.com" },
+    "77778888": { nombre: "Paola Ríos", cupones: 4, telefono: "0991234567", email: "paola.rios@email.com" },
+    "99990000": { nombre: "Sofía Galeano", cupones: 2, telefono: "0981222333", email: "sofia.galeano@email.com" },
+    "12121212": { nombre: "José Giménez", cupones: 6, telefono: "0981765432", email: "jose.gimenez@email.com" },
+    "34343434": { nombre: "Natalia Romero", cupones: 8, telefono: "0971123123", email: "natalia.romero@email.com" },
+    "56565656": { nombre: "Rodrigo Vera", cupones: 3, telefono: "0981777666", email: "rodrigo.vera@email.com" },
+    "78787878": { nombre: "Lucía Cáceres", cupones: 5, telefono: "0991122444", email: "lucia.caceres@email.com" },
+    "90909090": { nombre: "Miguel Acosta", cupones: 10, telefono: "0981987654", email: "miguel.acosta@email.com" }
+  };
+
+  let intervalId;
+
+  function iniciarTombola() {
+    const lista = [];
+
+    for (const [cedula, datos] of Object.entries(clientes)) {
+      for (let i = 0; i < datos.cupones; i++) {
+        lista.push({ cedula, ...datos });
+      }
+    }
+
+    const nombreElemento = document.getElementById("nombreActual");
+    const ganadorElemento = document.getElementById("ganador");
+    ganadorElemento.innerHTML = "";
+
+    intervalId = setInterval(() => {
+      const randomIndex = Math.floor(Math.random() * lista.length);
+      const actual = lista[randomIndex];
+      nombreElemento.textContent = actual.nombre;
+    }, 100);
+
+    setTimeout(() => {
+      clearInterval(intervalId);
+      const ganador = lista[Math.floor(Math.random() * lista.length)];
+      nombreElemento.textContent = ganador.nombre;
+      ganadorElemento.innerHTML = `
+        🎉 ¡El ganador es <strong>${ganador.nombre}</strong>!<br>
+        🪪 C.I.: ${ganador.cedula}<br>
+        📞 Teléfono: ${ganador.telefono}<br>
+        📧 Email: ${ganador.email}
+      `;
+    }, 5000);
+  }
+</script>
+
+</body>
+</html>
+

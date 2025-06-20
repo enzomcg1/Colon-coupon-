@@ -107,7 +107,8 @@
   <header>
     <img src="colonsa.png" alt="Logo nuevo" class="logo">
     <nav>
-      <a href="#">CONSULTAR CUPONES</a>
+      <a href="index.html">CONSULTAR CUPONES</a>
+      <a href="sorteo.html">SORTEAR CUPONES</a>
     </nav>
   </header>
 
@@ -121,10 +122,22 @@
   </main>
 
   <script>
-    const clientes = {
-      "12345678": { nombre: "Juan Pérez", cupones: 5 },
-      "87654321": { nombre: "María González", cupones: 3 }
-    };
+   const clientes = {
+  "12345678": { nombre: "Juan Pérez", cupones: 5, telefono: "0981123456", email: "juan.perez@email.com" },
+  "87654321": { nombre: "María González", cupones: 3, telefono: "0982987654", email: "maria.gonzalez@email.com" },
+  "11112222": { nombre: "Carlos López", cupones: 7, telefono: "0981123488", email: "carlos.lopez@email.com" },
+  "33334444": { nombre: "Ana Torres", cupones: 1, telefono: "0975123123", email: "ana.torres@email.com" },
+  "55556666": { nombre: "Luis Fernández", cupones: 9, telefono: "0981654321", email: "luis.fernandez@email.com" },
+  "77778888": { nombre: "Paola Ríos", cupones: 4, telefono: "0991234567", email: "paola.rios@email.com" },
+  "99990000": { nombre: "Sofía Galeano", cupones: 2, telefono: "0981222333", email: "sofia.galeano@email.com" },
+  "12121212": { nombre: "José Giménez", cupones: 6, telefono: "0981765432", email: "jose.gimenez@email.com" },
+  "34343434": { nombre: "Natalia Romero", cupones: 8, telefono: "0971123123", email: "natalia.romero@email.com" },
+  "56565656": { nombre: "Rodrigo Vera", cupones: 3, telefono: "0981777666", email: "rodrigo.vera@email.com" },
+  "78787878": { nombre: "Lucía Cáceres", cupones: 5, telefono: "0991122444", email: "lucia.caceres@email.com" },
+  "90909090": { nombre: "Miguel Acosta", cupones: 10, telefono: "0981987654", email: "miguel.acosta@email.com" }
+};
+
+
 
     function consultar() {
       const cedula = document.getElementById('cedula').value.trim();
