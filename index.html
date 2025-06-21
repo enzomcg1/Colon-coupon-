@@ -10,6 +10,22 @@
       box-sizing: border-box;
     }
 
+    .boton-nav {
+  display: inline-block;
+  background-color: #d1101c;
+  color: white;
+  padding: 10px 20px;
+  margin-left: 10px;
+  border-radius: 25px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.boton-nav:hover {
+  background-color: #a30d15;
+}
+
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
@@ -106,10 +122,10 @@
 <body>
   <header>
     <img src="colonsa.png" alt="Logo nuevo" class="logo">
-    <nav>
-      <a href="index.html">CONSULTAR CUPONES</a>
-      <a href="sorteo.html">SORTEAR CUPONES</a>
-    </nav>
+   <nav>
+  <a href="index.html" class="boton-nav">CONSULTAR CUPONES</a>
+  <a href="sorteo.html" class="boton-nav">SORTEAR CUPONES</a>
+</nav>
   </header>
 
   <main>
