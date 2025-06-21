@@ -117,16 +117,74 @@
         font-size: 20px;
       }
     }
+
+    .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #d1101c;
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.dropbtn:hover {
+  background-color: #a30d15;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #f26522;
+  color: white;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
   </style>
 </head>
 <body>
   <header>
-    <img src="colonsa.png" alt="Logo nuevo" class="logo">
-   <nav>
-  <a href="index.html" class="boton-nav">CONSULTAR CUPONES</a>
-  <a href="sorteo.html" class="boton-nav">SORTEAR CUPONES</a>
-</nav>
-  </header>
+  <img src="colonsa.png" alt="Logo nuevo" class="logo">
+
+  <div class="dropdown">
+    <button class="dropbtn">📋 Menú</button>
+    <div class="dropdown-content">
+      <a href="index.html">🧾 Consultar Cupones</a>
+      <a href="sorteo.html">🎁 Sortear Cupones</a>
+    </div>
+  </div>
+</header>
+
 
   <main>
     <h2>Consultá tus cupones acumulados</h2>
